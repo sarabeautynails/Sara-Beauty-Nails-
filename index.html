@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sara Beauty Nails — Paris</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;1,300;1,400&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Raleway',sans-serif;background:#fdf6f6;color:#5a3a3a;overflow-x:hidden;}
+:root{--pink:#fdf0f0;--rose:#f7d9d9;--rose2:#edbbbb;--blush:#e89e9e;--deep:#c47c7c;--text:#5a3a3a;--light:#9e7070;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.fade{animation:fadeUp 0.9s ease forwards;opacity:0;}
+.d1{animation-delay:0.1s}.d2{animation-delay:0.3s}.d3{animation-delay:0.5s}.d4{animation-delay:0.7s}
+.hero{min-height:100vh;background:linear-gradient(180deg,#fdf0f0 0%,#fae4e4 60%,#f5d5d5 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 24px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 50% 0%,rgba(255,200,200,0.3) 0%,transparent 60%);pointer-events:none;}
+.petal{font-size:32px;animation:float 4s ease-in-out infinite;margin-bottom:24px;display:block;}
+.hero-name{font-family:'Playfair Display',serif;font-size:clamp(52px,12vw,90px);font-weight:300;line-height:1;color:var(--text);letter-spacing:2px;margin-bottom:6px;}
+.hero-name em{font-style:italic;color:var(--blush);}
+.hero-tag{font-size:11px;font-weight:500;letter-spacing:6px;text-transform:uppercase;color:var(--light);margin-bottom:40px;}
+.hero-line{width:40px;height:1px;background:var(--rose2);margin:0 auto 40px;}
+.hero-btn{display:inline-block;padding:14px 40px;border:1px solid var(--blush);border-radius:40px;color:var(--deep);font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;text-decoration:none;transition:all 0.3s;background:transparent;cursor:pointer;}
+.hero-btn:hover{background:var(--blush);color:#fff;border-color:var(--blush);}
+.prestations{padding:80px 24px;background:#fff;}
+.sec-label{font-size:10px;font-weight:500;letter-spacing:5px;text-transform:uppercase;color:var(--blush);text-align:center;margin-bottom:12px;}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,42px);font-weight:300;text-align:center;color:var(--text);margin-bottom:48px;line-height:1.2;}
+.sec-title em{font-style:italic;color:var(--blush);}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:32px;}
+.tab{padding:8px 20px;border-radius:40px;border:1px solid var(--rose2);background:transparent;color:var(--light);font-family:'Raleway',sans-serif;font-size:11px;font-weight:500;letter-spacing:1px;cursor:pointer;transition:all 0.2s;}
+.tab.active{background:var(--blush);border-color:var(--blush);color:#fff;}
+.presta-section{display:none;max-width:600px;margin:0 auto;}
+.presta-section.active{display:block;}
+.presta-row{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--pink);gap:16px;}
+.presta-row:last-child{border-bottom:none;}
+.presta-left{flex:1;}
+.presta-row-name{font-size:13px;color:var(--text);line-height:1.4;}
+.presta-row-dur{font-size:11px;color:var(--light);margin-top:2px;}
+.presta-row-price{font-family:'Playfair Display',serif;font-size:16px;color:var(--blush);font-weight:400;white-space:nowrap;}
+.reservation{padding:80px 24px;background:linear-gradient(180deg,#fdf0f0,#fae4e4);}
+.form-box{max-width:480px;margin:48px auto 0;background:#fff;border-radius:16px;padding:36px 28px;box-shadow:0 4px 40px rgba(196,124,124,0.08);}
+.steps{display:flex;align-items:center;justify-content:center;margin-bottom:32px;}
+.s-dot{width:24px;height:24px;border-radius:50%;background:var(--rose);color:var(--light);font-size:10px;font-weight:600;display:flex;align-items:center;justify-content:center;transition:all 0.3s;flex-shrink:0;}
+.s-dot.active{background:var(--blush);color:#fff;}
+.s-dot.done{background:var(--deep);color:#fff;}
+.s-line{width:32px;height:1px;background:var(--rose);margin:0 4px;}
+.s-labels{display:flex;justify-content:center;gap:28px;margin-bottom:28px;}
+.s-lbl{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--light);}
+.s-lbl.active{color:var(--deep);font-weight:600;}
+.fstep{display:none;}
+.fstep.active{display:block;}
+.ftitle{font-family:'Playfair Display',serif;font-size:20px;font-weight:300;color:var(--text);text-align:center;margin-bottom:22px;}
+.cats{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;}
+.cat{padding:7px 16px;border-radius:40px;border:1px solid var(--rose2);background:#fff;color:var(--text);font-family:'Raleway',sans-serif;font-size:11px;cursor:pointer;transition:all 0.2s;}
+.cat.active{background:var(--blush);border-color:var(--blush);color:#fff;}
+.plist{display:flex;flex-direction:column;gap:6px;max-height:260px;overflow-y:auto;}
+.popt{display:flex;justify-content:space-between;align-items:center;padding:11px 14px;border:1px solid var(--rose);border-radius:10px;cursor:pointer;transition:all 0.2s;background:#fff;}
+.popt:hover,.popt.sel{border-color:var(--blush);background:var(--pink);}
+.popt-name{font-size:12px;color:var(--text);flex:1;padding-right:10px;line-height:1.4;}
+.popt-price{font-family:'Playfair Display',serif;font-size:14px;color:var(--blush);display:block;white-space:nowrap;}
+.popt-dur{font-size:10px;color:var(--light);}
+.hgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;}
+.hbtn{padding:9px 4px;border-radius:8px;border:1px solid var(--rose);background:#fff;color:var(--text);font-family:'Raleway',sans-serif;font-size:12px;cursor:pointer;transition:all 0.2s;text-align:center;}
+.hbtn.sel{background:var(--blush);border-color:var(--blush);color:#fff;}
+.frow{display:flex;gap:12px;}
+.fg{margin-bottom:14px;flex:1;}
+.flbl{display:block;font-size:9px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--light);margin-bottom:5px;}
+.finput{width:100%;padding:10px 13px;border:1px solid var(--rose);border-radius:8px;font-family:'Raleway',sans-serif;font-size:13px;color:var(--text);background:#fdfafa;outline:none;transition:border-color 0.2s;}
+.finput:focus{border-color:var(--blush);}
+textarea.finput{height:70px;resize:vertical;}
+.recap{background:var(--pink);border-radius:10px;padding:14px 16px;margin-bottom:16px;}
+.recap-t{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--blush);margin-bottom:8px;}
+.recap-l{font-family:'Playfair Display',serif;font-size:15px;color:var(--text);margin-bottom:3px;}
+.err{color:#c0392b;font-size:11px;margin-top:3px;display:none;}
+.navbtns{display:flex;gap:10px;margin-top:20px;}
+.btnp{flex:1;padding:13px;background:var(--blush);color:#fff;border:none;border-radius:40px;font-family:'Raleway',sans-serif;font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background 0.3s;}
+.btnp:hover{background:var(--deep);}
+.btns{padding:13px 18px;background:transparent;color:var(--light);border:1px solid var(--rose2);border-radius:40px;font-family:'Raleway',sans-serif;font-size:11px;cursor:pointer;}
+.success{display:none;text-align:center;padding:16px 0;}
+.success.active{display:block;}
+.sico{font-size:48px;animation:float 3s ease-in-out infinite;margin-bottom:14px;}
+.stitle{font-family:'Playfair Display',serif;font-size:24px;font-weight:300;color:var(--text);margin-bottom:10px;}
+.stext{font-size:13px;color:var(--light);line-height:1.7;margin-bottom:20px;}
+.insta{padding:70px 24px;background:#fff;text-align:center;}
+.insta-inner{max-width:400px;margin:0 auto;}
+.insta-icon{font-size:36px;margin-bottom:16px;display:block;}
+.insta-handle{font-family:'Playfair Display',serif;font-size:28px;font-weight:300;font-style:italic;color:var(--text);margin-bottom:8px;}
+.insta-sub{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--light);margin-bottom:28px;}
+.insta-btn{display:inline-flex;align-items:center;gap:10px;padding:13px 32px;border:1px solid var(--rose2);border-radius:40px;color:var(--deep);font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:all 0.3s;}
+.insta-btn:hover{background:var(--blush);color:#fff;border-color:var(--blush);}
+.email-link{display:block;margin-top:16px;font-size:12px;color:var(--light);text-decoration:none;letter-spacing:1px;}
+footer{background:var(--pink);padding:24px;text-align:center;}
+footer p{font-size:10px;color:var(--light);letter-spacing:3px;text-transform:uppercase;}
+</style>
+</head>
+<body>
+<section class="hero">
+  <span class="petal fade d1">🌸</span>
+  <h1 class="hero-name fade d2">Sara<br><em>Beauty Nails</em></h1>
+  <p class="hero-tag fade d3">Nails Architect · Paris</p>
+  <div class="hero-line fade d3"></div>
+  <a href="#reservation" class="hero-btn fade d4">Réserver maintenant</a>
+</section>
+<section class="prestations" id="prestations">
+  <p class="sec-label">Menu</p>
+  <h2 class="sec-title">Nos <em>Prestations</em></h2>
+  <div class="tabs">
+    <button class="tab active" onclick="showTab('ongles',this)">🌸 Ongles Naturels</button>
+    <button class="tab" onclick="showTab('chablon',this)">✨ Rallongement</button>
+    <button class="tab" onclick="showTab('pieds',this)">🦶 Pieds</button>
+    <button class="tab" onclick="showTab('suppl',this)">💎 Suppléments</button>
+  </div>
+  <div class="presta-section active" id="tab-ongles">
+    <div class="presta-row"><div class="presta-left"><div class="presta-row-name">Manucure Russe (Sans Pose)</div><div class="presta-row-dur">30 min</div></div><div class="presta-row-price">25 €</div></div>
+    <div class="presta-row"><div class="presta-left"><div class="presta-row-name">Gainage Nude — Ongle Nue</div><div class="presta-row-dur">1h</div></div><div class="presta-row-price">50 €</div></div>
+    <div class="presta-row"><div class="presta-left"><div class="presta-row-name">Gainage + Vernis Semi-Permanent</div><div class="presta-row-dur">1h30</div></div><div class="presta-row-price">55 €</div></div>
+    <div class="presta-row"><div class="presta-left"><div class="presta-row-name">Remplissage Gainage Nude</div><div class="presta-row-dur">1h30</div></div><div class="presta-row-price">65 €</div></div>
+    <div class="presta-row"><div class="presta-left"><div class="presta-row-name">Remplissage Gainage + Vsp</div><div class="presta-row-dur">2h</div></div><div class="presta-row-price">70 €</div></div>
+    <div class="presta-row"><div class="presta-left"><div class="presta-row-name">Dépose Extérieur</div><div class="presta-row-dur">30 min</div></div><div class="presta-row-price">15 €</div></div>
+  </div>
+  <div class="presta-section" id="tab-chablon">
+    <div class="presta-row"><div class="presta-left"><div class="presta-row-name">Chablon Nude Taille S</div><div class="presta-row-dur">2h</div></div><div class="presta-row-price">90 €</div></div>
+    <div class="presta-row"><div class="presta-left"><div class="presta-row-name">Chablon + Vsp Taille S</div><div class="presta-row-dur">2h30</div></div><div class="presta-row-price">95 €</div></div>
+    <div class="presta-row"><div class="presta-left"><div class="presta-row-name">Chablon Nude Taille M</div><div class="presta-row-dur">3h</div></div><div class="presta-row-price">100 €</div></div>
+    <div class="presta-row"><div class="presta-left"><div class="presta-row-name">Chablon + Vsp Taille M</div><div class="presta-row-dur">3h30</div></div><div class="presta-row-price">120 €</div></div>
+    <div class="presta-row"><div class="presta-left"><div class="presta-row-name">Remplissage Gel Nude</div><div class="presta-row-dur">1h30</div></div><div class="presta-row-price">80 €</div></div>
+    <div class="presta-row"><div class="presta-left"><div class="presta-row-name">Remplissage Gel + Vsp</div><div class="presta-row-dur">2h</div></div><div class="presta-row-price">85 €</div></div>
+  </div>
+  <div class="presta-section" id="tab-pieds">
+    <div class="presta-row"><div class="presta-left"><div class="presta-row-name">Pédicure Russe Sans Pose</div><div class="presta-row-dur">30 min</div></div><div class="presta-row-price">25 €</div></div>
+    <div class="presta-row"><div class="presta-left"><div class="presta-row-name">Renforcement Base Nude</div><div class="presta-row-dur">1h</div></div><div class="presta-row-price">45 €</div></div>
+    <div class="presta-row"><div class="presta-left"><div class="presta-row-name">Renforcement + Vsp</div><div class="presta-row-dur">1h30</div></div><div class="presta-row-price">50 €</div></div>
+    <div class="presta-row"><div class="presta-left"><div class="presta-row-name">Dépose + Renforcement Base Nude</div><div class="presta-row-dur">1h30</div></div><div class="presta-row-price">55 €</div></div>
+    <div class="presta-row"><div class="presta-left"><div class="presta-row-name">Dépose + Renforcement Vsp</div><div class="presta-row-dur">1h30</div></div><div class="presta-row-price">55 €</div></div>
+  </div>
+  <div class="presta-section" id="tab-suppl">
+    <div class="presta-row"><div class="presta-left"><div class="presta-row-name">French Mains</div><div class="presta-row-dur">30 min</div></div><div class="presta-row-price">10 €</div></div>
+    <div class="presta-row"><div class="presta-left"><div class="presta-row-name">Baby Boomer</div><div class="presta-row-dur">30 min</div></div><div class="presta-row-price">10 €</div></div>
+    <div class="presta-row"><div class="presta-left"><div class="presta-row-name">Reconstruction Acrygel</div><div class="presta-row-dur">30 min</div></div><div class="presta-row-price">3 €</div></div>
+    <div class="presta-row"><div class="presta-left"><div class="presta-row-name">Dépose Complète Mains</div><div class="presta-row-dur">30 min</div></div><div class="presta-row-price">35 €</div></div>
+    <div class="presta-row"><div class="presta-left"><div class="presta-row-name">Effet Chrome</div><div class="presta-row-dur">30 min</div></div><div class="presta-row-price">10 €</div></div>
+    <div class="presta-row"><div class="presta-left"><div class="presta-row-name">French Pieds</div><div class="presta-row-dur">30 min</div></div><div class="presta-row-price">10 €</div></div>
+    <div class="presta-row"><div class="presta-left"><div class="presta-row-name">Dépose Complète Pieds</div><div class="presta-row-dur">30 min</div></div><div class="presta-row-price">35 €</div></div>
+  </div>
+</section>
+<section class="reservation" id="reservation">
+  <p class="sec-label">Rendez-vous</p>
+  <h2 class="sec-title">Réserver <em>en ligne</em></h2>
+  <div class="form-box">
+    <div class="success" id="successScreen">
+      <div class="sico">🌸</div>
+      <h3 class="stitle">Demande envoyée !</h3>
+      <p class="stext">Merci ! Sara vous confirmera votre rendez-vous dans les plus brefs délais.</p>
+      <button class="btnp" onclick="resetForm()">Nouvelle réservation</button>
+    </div>
+    <div id="formContent">
+      <div class="steps">
+        <div class="s-dot active" id="d1">1</div><div class="s-line"></div>
+        <div class="s-dot" id="d2">2</div><div class="s-line"></div>
+        <div class="s-dot" id="d3">3</div>
+      </div>
+      <div class="s-labels">
+        <span class="s-lbl active" id="l1">Prestation</span>
+        <span class="s-lbl" id="l2">Créneau</span>
+        <span class="s-lbl" id="l3">Infos</span>
+      </div>
+      <div class="fstep active" id="fs1">
+        <h3 class="ftitle">Votre prestation</h3>
+        <div class="cats">
+          <button class="cat" onclick="selCat('ongles',this)">🌸 Ongles</button>
+          <button class="cat" onclick="selCat('chablon',this)">✨ Rallongement</button>
+          <button class="cat" onclick="selCat('pieds',this)">🦶 Pieds</button>
+          <button class="cat" onclick="selCat('suppl',this)">💎 Supplément</button>
+        </div>
+        <div class="plist" id="plist"></div>
+        <div class="err" id="e1">Veuillez choisir une prestation.</div>
+        <div class="navbtns"><button class="btnp" onclick="next(2)">Continuer →</button></div>
+      </div>
+      <div class="fstep" id="fs2">
+        <h3 class="ftitle">Date & Heure</h3>
+        <div class="fg"><label class="flbl">📅 Date</label><input type="date" class="finput" id="fdate"/><div class="err" id="edate">Veuillez choisir une date.</div></div>
+        <div class="fg"><label class="flbl">🕐 Heure</label><div class="hgrid" id="hgrid"></div><div class="err" id="eheure">Veuillez choisir une heure.</div></div>
+        <div class="navbtns"><button class="btns" onclick="next(1)">← Retour</button><button class="btnp" onclick="next(3)">Continuer →</button></div>
+      </div>
+      <div class="fstep" id="fs3">
+        <h3 class="ftitle">Vos coordonnées</h3>
+        <div class="frow">
+          <div class="fg"><label class="flbl">Prénom</label><input type="text" class="finput" id="fprenom" placeholder="Marie"/><div class="err" id="eprenom">Requis.</div></div>
+          <div class="fg"><label class="flbl">Nom</label><input type="text" class="finput" id="fnom" placeholder="Dupont"/><div class="err" id="enom">Requis.</div></div>
+        </div>
+        <div class="fg"><label class="flbl">📧 Email</label><input type="email" class="finput" id="femail" placeholder="marie@email.com"/><div class="err" id="eemail">Email invalide.</div></div>
+        <div class="fg"><label class="flbl">📞 Téléphone</label><input type="tel" class="finput" id="ftel" placeholder="06 00 00 00 00"/><div class="err" id="etel">Requis.</div></div>
+        <div class="fg"><label class="flbl">💬 Message</label><textarea class="finput" id="fmsg" placeholder="Couleur souhaitée..."></textarea></div>
+        <div class="recap"><div class="recap-t">Récapitulatif</div><div class="recap-l" id="rpresta"></div><div class="recap-l" id="rdate"></div></div>
+        <div class="navbtns"><button class="btns" onclick="next(2)">← Retour</button><button class="btnp" onclick="submit()">Envoyer 🌸</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="insta">
+  <div class="insta-inner">
+    <span class="insta-icon">📸</span>
+    <h2 class="insta-handle">@sarabeautynails</h2>
+    <p class="insta-sub">Suivez mes réalisations</p>
+    <a href="https://instagram.com/sarabeautynails" class="insta-btn">Voir Instagram</a>
+    <a href="mailto:sarabeautynailsparis@gmail.com" class="email-link">sarabeautynailsparis@gmail.com</a>
+  </div>
+</section>
+<footer><p>Sara Beauty Nails · Nails Architect · Paris · 2025</p></footer>
+<script>
+const DATA={ongles:[{l:'Manucure Russe (Sans Pose)',p:'25 €',d:'30 min'},{l:'Gainage Nude — Ongle Nue',p:'50 €',d:'1h'},{l:'Gainage + Vernis Semi-Permanent',p:'55 €',d:'1h30'},{l:'Remplissage Gainage Nude',p:'65 €',d:'1h30'},{l:'Remplissage Gainage + Vsp',p:'70 €',d:'2h'},{l:'Dépose Extérieur',p:'15 €',d:'30 min'}],chablon:[{l:'Chablon Nude Taille S',p:'90 €',d:'2h'},{l:'Chablon + Vsp Taille S',p:'95 €',d:'2h30'},{l:'Chablon Nude Taille M',p:'100 €',d:'3h'},{l:'Chablon + Vsp Taille M',p:'120 €',d:'3h30'},{l:'Remplissage Gel Nude',p:'80 €',d:'1h30'},{l:'Remplissage Gel + Vsp',p:'85 €',d:'2h'}],pieds:[{l:'Pédicure Russe Sans Pose',p:'25 €',d:'30 min'},{l:'Renforcement Base Nude',p:'45 €',d:'1h'},{l:'Renforcement + Vsp',p:'50 €',d:'1h30'},{l:'Dépose + Renforcement Base Nude',p:'55 €',d:'1h30'},{l:'Dépose + Renforcement Vsp',p:'55 €',d:'1h30'}],suppl:[{l:'French Mains',p:'10 €',d:'30 min'},{l:'Baby Boomer',p:'10 €',d:'30 min'},{l:'Reconstruction Acrygel',p:'3 €',d:'30 min'},{l:'Dépose Complète Mains',p:'35 €',d:'30 min'},{l:'Effet Chrome',p:'10 €',d:'30 min'},{l:'French Pieds',p:'10 €',d:'30 min'},{l:'Dépose Complète Pieds',p:'35 €',d:'30 min'}]};
+const HEURES=['09:00','09:30','10:00','10:30','11:00','11:30','12:00','14:00','14:30','15:00','15:30','16:00','16:30','17:00','17:30','18:00'];
+let selP=null,selH=null,step=1;
+document.getElementById('fdate').min=new Date().toISOString().split('T')[0];
+const hg=document.getElementById('hgrid');
+HEURES.forEach(h=>{const b=document.createElement('div');b.className='hbtn';b.textContent=h;b.onclick=()=>{document.querySelectorAll('.hbtn').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');selH=h;};hg.appendChild(b);});
+function showTab(id,el){document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.presta-section').forEach(s=>s.classList.remove('active'));el.classList.add('active');document.getElementById('tab-'+id).classList.add('active');}
+function selCat(cat,el){document.querySelectorAll('.cat').forEach(c=>c.classList.remove('active'));el.classList.add('active');const pl=document.getElementById('plist');pl.innerHTML='';selP=null;DATA[cat].forEach(p=>{const d=document.createElement('div');d.className='popt';d.innerHTML=`<span class="popt-name">${p.l}</span><div style="text-align:right;flex-shrink:0"><span class="popt-price">${p.p}</span><span class="popt-dur">${p.d}</span></div>`;d.onclick=()=>{document.querySelectorAll('.popt').forEach(o=>o.classList.remove('sel'));d.classList.add('sel');selP=p;};pl.appendChild(d);});}
+function next(n){if(n>step){if(step===1&&!selP){document.getElementById('e1').style.display='block';return;}document.getElementById('e1').style.display='none';if(step===2){let ok=true;if(!document.getElementById('fdate').value){document.getElementById('edate').style.display='block';ok=false;}else document.getElementById('edate').style.display='none';if(!selH){document.getElementById('eheure').style.display='block';ok=false;}else document.getElementById('eheure').style.display='none';if(!ok)return;document.getElementById('rpresta').textContent='💅 '+selP.l+' — '+selP.p;document.getElementById('rdate').textContent='📅 '+document.getElementById('fdate').value+' à '+selH;}}document.getElementById('fs'+step).classList.remove('active');document.getElementById('d'+step).classList.remove('active');document.getElementById('l'+step).classList.remove('active');if(n>step){document.getElementById('d'+step).classList.add('done');document.getElementById('d'+step).textContent='✓';}step=n;document.getElementById('fs'+step).classList.add('active');document.getElementById('d'+step).classList.add('active');document.getElementById('l'+step).classList.add('active');}
+function submit(){let ok=true;const p=document.getElementById('fprenom').value,n=document.getElementById('fnom').value,e=document.getElementById('femail').value,t=document.getElementById('ftel').value;if(!p){document.getElementById('eprenom').style.display='block';ok=false;}else document.getElementById('eprenom').style.display='none';if(!n){document.getElementById('enom').style.display='block';ok=false;}else document.getElementById('enom').style.display='none';if(!e||!/\S+@\S+\.\S+/.test(e)){document.getElementById('eemail').style.display='block';ok=false;}else document.getElementById('eemail').style.display='none';if(!t){document.getElementById('etel').style.display='block';ok=false;}else document.getElementById('etel').style.display='none';if(!ok)return;const subj=`Réservation ${selP.l} - ${p} ${n}`;const body=`Bonjour Sara,\n\nNouvelle demande :\n\n👤 ${p} ${n}\n📧 ${e}\n📞 ${t}\n\n💅 ${selP.l} — ${selP.p}\n📅 ${document.getElementById('fdate').value} à ${selH}\n\n💬 ${document.getElementById('fmsg').value||'Aucun message'}`;window.location.href='mailto:sarabeautynailsparis@gmail.com?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body);document.getElementById('formContent').style.display='none';document.getElementById('successScreen').classList.add('active');}
+function resetForm(){selP=null;selH=null;step=1;document.getElementById('successScreen').classList.remove('active');document.getElementById('formContent').style.display='block';for(let i=1;i<=3;i++){document.getElementById('fs'+i).classList.remove('active');document.getElementById('d'+i).classList.remove('active','done');document.getElementById('d'+i).textContent=i;document.getElementById('l'+i).classList.remove('active');}document.getElementById('fs1').classList.add('active');document.getElementById('d1').classList.add('active');document.getElementById('l1').classList.add('active');document.getElementById('plist').innerHTML='';document.querySelectorAll('.cat,.hbtn').forEach(b=>b.classList.remove('active','sel'));['fdate','fprenom','fnom','femail','ftel','fmsg'].forEach(id=>document.getElementById(id).value='');}
+</script>
+</body>
+</html>
